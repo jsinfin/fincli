@@ -15,7 +15,7 @@ const cmdMenus = {
     Basic Usage:
     fincli market <options>
 
-    --option, -o ..... the option to use`,
+    --mic, -m ..... get MIC as a param`,
 }
 
 module.exports = (args) => {
