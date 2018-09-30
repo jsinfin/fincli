@@ -21,17 +21,21 @@ const cmdMenus = {
     ${d(`Options:`)}
     
     -v, -version         show fincli package version
-    -h, -help            show fincli help menu for a command`,
+    -h, -help            show fincli help menu for a command
+    -symbol, -s          get individual symbol data for crypto
+    -mic, -m             get individual mic data for market`,
 
   market: `
     ${d(`Basic Usage:`)}
-    fincli market <no options>`,
+    fincli market <options>
 
-  quote: `
+    -m, mic              get individual MIC (Market Identifier Code) data`,
+
+  crypto: `
     ${d(`Basic Usage:`)}
-    fincli quote <options> 
+    fincli crypto <options> 
 
-    -symbol -s    get individual symbol data`
+    -s, -symbol          get individual symbol data`
 }
 
 module.exports = (args) => {

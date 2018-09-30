@@ -7,9 +7,9 @@ const chalk = require('chalk')
 module.exports = async (args) => {
   const spinner = ora().start()
   const symbol = args.symbol || args.s
-  let quoteData = null
+  let stockQuoteData = null
 
-  const CryptoTable = new Table({
+  const StockQuoteTable = new Table({
     chars: {
       'mid': '',
       'left-mid': '',
@@ -17,36 +17,46 @@ module.exports = async (args) => {
       'right-mid': ''
     },
     head: [
-      chalk.bold.green('NAME'),
+      chalk.bold.green('SYMBOL'),
+      chalk.bold.green('PRIMARY EXCHANGE'),
       chalk.bold.green('OPEN'),
+      chalk.bold.green('PREV CLOSE'),
       chalk.bold.green('CLOSE'),
       chalk.bold.green('HIGH'),
       chalk.bold.green('LOW'),
       chalk.bold.green('LATEST PRICE'),
-      chalk.bold.green('PREVIOUS CLOSE'),
+      chalk.bold.green('VOLUME'),
       chalk.bold.green('CHANGE'),
+      chalk.bold.green('52 WEEK HIGH'),
+      chalk.bold.green('52 WEEK LOW'),
     ]
   })
 
   try {
-    apiRequest.baseCryptoAPI()
+    apiRequest.baseStockQuoteAPI(symbol)
       .then(response => {
-        quoteData = response
+        stockQuoteData = response
         spinner.stop()
 
-        for (let i=0; i < quoteData.length; i++) {
-          CryptoTable.push([
-            chalk.bold.white(quoteData[i].companyName.toUpperCase()),
-            chalk.white(quoteData[i].open),
-            chalk.white(quoteData[i].close),
-            chalk.white(quoteData[i].high),
-            chalk.white(quoteData[i].low),
-            chalk.white(quoteData[i].latestPrice),
-            chalk.white(quoteData[i].previousClose),
-            chalk.bold.white(quoteData[i].change)
+        console.log(stockQuoteData)
+
+        for (let i=0; i < stockQuoteData.length; i++) {
+          StockQuoteTable.push([
+            chalk.bold.white(stockQuoteData[i].symbol.toUpperCase()),
+            chalk.white(stockQuoteData[i].primaryExchange),
+            chalk.white(stockQuoteData[i].open),
+            chalk.white(stockQuoteData[i].previousClose),
+            chalk.white(stockQuoteData[i].close),
+            chalk.white(stockQuoteData[i].high),
+            chalk.white(stockQuoteData[i].low),
+            chalk.bold.white(stockQuoteData[i].latestPrice),
+            chalk.bold.white(stockQuoteData[i].latestVolume),
+            chalk.bold.white(stockQuoteData[i].change),
+            chalk.bold.white(stockQuoteData[i].week52High),
+            chalk.bold.white(stockQuoteData[i].week52Low)
           ])
         }
-        console.log(CryptoTable.toString())
+        console.log(StockQuoteTable.toString())
         console.log(`
         `)
       })

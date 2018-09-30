@@ -2,9 +2,11 @@ const fetch = require('isomorphic-unfetch')
 const BASE_URL = `https://api.iextrading.com/1.0/`
 const marketAPI = `market`
 const crypto = 'crypto'
+const quote = 'quote'
 
-let baseMarketData
-let baseCryptoData
+let baseMarketData = null
+let baseCryptoData = null
+let baseStockQuoteData = null
 
 module.exports = {
   baseMarketAPI: async() => {
@@ -13,10 +15,14 @@ module.exports = {
     return baseMarketData
   },
   baseCryptoAPI: async() => {
-    console.log(`${BASE_URL}${marketAPI}/${crypto}`)
     let response = await fetch(`${BASE_URL}/stock/${marketAPI}/${crypto}`)
     baseCryptoData = await response.json()
     return baseCryptoData
+  },
+  baseStockQuoteAPI: async(symbol) => {
+    let response = await fetch(`${BASE_URL}/stock/${symbol}/${quote}`)
+    baseStockQuoteData = await response.json()
+    return baseStockQuoteData
   }
 }
 
