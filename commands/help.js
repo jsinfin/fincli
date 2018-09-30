@@ -1,21 +1,37 @@
+const chalk = require('chalk')
+const b = chalk.bold
+const u = chalk.underline
+const d = chalk.dim
+
 const cmdMenus = {
   index: `
-    fincli 1.0.0
+    ${b(`fincli`)}
     url: https://github.com/jsinfin/fincli
+    version: 1.0.0
     
-    Basic Commands:
-    fincli [command] <options>
+    ${b(`> fincli`)} [command] <options>
     
-    market ............. show market data
-    version ............ show fincli package version
-    help ............... show fincli help menu for a command
-    config ............. path to your config file`,
+    ${d(`Commands:`)}
+    
+    market               show market data
+    quote                show quote data
+    crypto               get cryptocurrencies
+    -h, -help            pass options to get help, /ie: 'fincli market -help'
+
+    ${d(`Options:`)}
+    
+    -v, -version         show fincli package version
+    -h, -help            show fincli help menu for a command`,
 
   market: `
-    Basic Usage:
-    fincli market <options>
+    ${d(`Basic Usage:`)}
+    fincli market <no options>`,
 
-    --mic, -m ..... get MIC as a param`,
+  quote: `
+    ${d(`Basic Usage:`)}
+    fincli quote <options> 
+
+    -symbol -s    get individual symbol data`
 }
 
 module.exports = (args) => {
@@ -25,3 +41,4 @@ module.exports = (args) => {
 
   console.log(cmdMenus[subCmd] || cmdMenus.index)
 }
+

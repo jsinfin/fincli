@@ -18,6 +18,12 @@ module.exports = () => {
     case 'market':
       require('./commands/market')(args)
       break
+    case 'quote':
+      require('./commands/quote')(args)
+      break
+    case 'crypto':
+      require('./commands/crypto')(args)
+      break
     case 'version':
       require('./commands/version')(args)
       break
