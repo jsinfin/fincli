@@ -16,6 +16,8 @@ const cmdMenus = {
     market               show market data
     quote                show quote data
     crypto               get cryptocurrencies
+    price                get price of stick quote
+    collection           get a collection of stocks per sector
     -h, -help            pass options to get help, /ie: 'fincli market -help'
 
     ${d(`Options:`)}
@@ -23,7 +25,8 @@ const cmdMenus = {
     -v, -version         show fincli package version
     -h, -help            show fincli help menu for a command
     -symbol, -s          get individual symbol data for crypto
-    -mic, -m             get individual mic data for market`,
+    -mic, -m             get individual mic data for market
+    -sector, -s          get collection based on sector`,
 
   market: `
     ${d(`Basic Usage:`)}
@@ -35,7 +38,19 @@ const cmdMenus = {
     ${d(`Basic Usage:`)}
     fincli crypto <options> 
 
-    -s, -symbol          get individual symbol data`
+    -s, -symbol          get individual symbol data`,
+
+  price: `
+    ${d(`Basic Usage:`)}
+    fincli price <options> 
+
+    -s, -symbol          get individual price data for symbol`,
+
+  collection: `
+    ${d(`Basic Usage:`)}
+    fincli collection <options> 
+
+    -s, -sector          get collection based on sector`
 }
 
 module.exports = (args) => {

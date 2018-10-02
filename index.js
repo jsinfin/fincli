@@ -24,6 +24,12 @@ module.exports = () => {
     case 'crypto':
       require('./commands/crypto')(args)
       break
+    case 'price':
+      require('./commands/price')(args)
+      break
+    case 'collection':
+      require('./commands/collection')(args)
+      break
     case 'version':
       require('./commands/version')(args)
       break

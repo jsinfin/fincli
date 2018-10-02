@@ -9,9 +9,9 @@ module.exports = async (args) => {
 
   const spinner = ora().start()
   const symbol = args.symbol || args.s
-  let quoteData = null
+  let cryptoData = null
 
-  const QuoteTable = new Table({
+  const CryptoTable = new Table({
     chars: {
       'mid': '',
       'left-mid': '',
@@ -39,10 +39,10 @@ module.exports = async (args) => {
       // @todo: refactor to use just one loop
       apiRequest.baseCryptoAPI()
         .then(response => {
-          quoteData = response
+          cryptoData = response
           spinner.stop()
 
-          const mySymbol = utils.filterCryptoBySymbol(quoteData, symbol)
+          const mySymbol = utils.filterCryptoBySymbol(cryptoData, symbol)
 
           for (let i=0; i < mySymbol.length; i++) {
             CryptoTable.push([

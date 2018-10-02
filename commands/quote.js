@@ -28,7 +28,7 @@ module.exports = async (args) => {
       chalk.bold.green('VOLUME'),
       chalk.bold.green('CHANGE'),
       chalk.bold.green('52 WEEK HIGH'),
-      chalk.bold.green('52 WEEK LOW'),
+      chalk.bold.green('52 WEEK LOW')
     ]
   })
 
@@ -38,24 +38,21 @@ module.exports = async (args) => {
         stockQuoteData = response
         spinner.stop()
 
-        console.log(stockQuoteData)
+        StockQuoteTable.push([
+          chalk.white(stockQuoteData.symbol.toUpperCase()),
+          chalk.white(stockQuoteData.primaryExchange),
+          chalk.white(stockQuoteData.open),
+          chalk.white(stockQuoteData.previousClose),
+          chalk.white(stockQuoteData.close),
+          chalk.white(stockQuoteData.high),
+          chalk.white(stockQuoteData.low),
+          chalk.white(stockQuoteData.latestPrice),
+          chalk.white(stockQuoteData.latestVolume),
+          chalk.white(stockQuoteData.change),
+          chalk.white(stockQuoteData.week52High),
+          chalk.white(stockQuoteData.week52Low)
+        ])
 
-        for (let i=0; i < stockQuoteData.length; i++) {
-          StockQuoteTable.push([
-            chalk.bold.white(stockQuoteData[i].symbol.toUpperCase()),
-            chalk.white(stockQuoteData[i].primaryExchange),
-            chalk.white(stockQuoteData[i].open),
-            chalk.white(stockQuoteData[i].previousClose),
-            chalk.white(stockQuoteData[i].close),
-            chalk.white(stockQuoteData[i].high),
-            chalk.white(stockQuoteData[i].low),
-            chalk.bold.white(stockQuoteData[i].latestPrice),
-            chalk.bold.white(stockQuoteData[i].latestVolume),
-            chalk.bold.white(stockQuoteData[i].change),
-            chalk.bold.white(stockQuoteData[i].week52High),
-            chalk.bold.white(stockQuoteData[i].week52Low)
-          ])
-        }
         console.log(StockQuoteTable.toString())
         console.log(`
         `)

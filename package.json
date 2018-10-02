@@ -1,7 +1,28 @@
 {
   "name": "cli-starter",
   "version": "1.0.0",
-  "description": "a minimal starter for your next Node CLI app",
+  "description": "A node CLI to app to find financial market, stock and related data",
+  "license": "MIT",
+  "homepage": "https://github.com/jsinfin/fincli/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsinfin/fincli"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "finance",
+    "fin",
+    "stock",
+    "quote",
+    "command line",
+    "cli",
+    "node",
+    "terminal",
+    "javascript"
+  ],
+  "preferGlobal": true,
   "bin": {
     "fincli": "bin/fincli"
   },
