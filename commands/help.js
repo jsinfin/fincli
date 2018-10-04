@@ -26,7 +26,13 @@ const cmdMenus = {
     -h, -help            show fincli help menu for a command
     -symbol, -s          get individual symbol data for crypto
     -mic, -m             get individual mic data for market
-    -sector, -s          get collection based on sector`,
+    -sector, -s          get collection based on sector
+
+    ${b(`Thanks!`)}
+  
+    ${d(`A big thanks to IEX Trading for the open API that powers all the data:
+    https://iextrading.com/
+    https://iextrading.com/developer/`)}`,
 
   market: `
     ${d(`Basic Usage:`)}

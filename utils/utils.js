@@ -1,3 +1,4 @@
+
 module.exports = {
   filterCryptoBySymbol: function(data, sym) {
     if (typeof sym !== 'string') {
@@ -10,5 +11,13 @@ module.exports = {
       throw new Error('arg must be a string')
     }
     return data.filter(m => m.mic === mic)
+  },
+  getTermSize: function() {
+    let terminalSize = {
+      cols: process.stdout.columns,
+      rows: process.stdout.rows
+    }
+
+    console.log(terminalSize)
   }
 }

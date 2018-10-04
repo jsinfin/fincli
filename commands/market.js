@@ -7,6 +7,7 @@ const d = chalk.dim
 const utils = require('../utils/utils')
 
 module.exports = async (args) => {
+  utils.getTermSize()
   const spinner = ora().start()
   const mic = args.mic || args.m
   let marketData = null
@@ -44,7 +45,6 @@ module.exports = async (args) => {
 
   try {
     if (mic) {
-      console.log('symbol arg passed')
       spinner.stop()
 
       // @todo: refactor to use just one loop
@@ -52,6 +52,7 @@ module.exports = async (args) => {
         .then(response => {
           marketData = response
           spinner.stop()
+          console.log(mic)
 
           const myMic = utils.filterMarketByMic(marketData, mic)
 
@@ -72,6 +73,7 @@ module.exports = async (args) => {
         `)
         })
     } else {
+      utils.getTermSize(console.log())
       apiRequest.baseMarketAPI()
         .then(response => {
           marketData = response
