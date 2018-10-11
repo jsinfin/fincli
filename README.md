@@ -4,7 +4,7 @@ Initial version of a node CLI to app to find financial market, stock and related
 
 ## INSTALLATION
 
-<strike>`npm install fincli -g`</strike> // will be pushed to npm latest 10/05/18
+`npm install fincli -g`
 
 ## USAGE
 
